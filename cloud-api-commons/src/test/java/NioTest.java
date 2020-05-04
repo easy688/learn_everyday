@@ -3,6 +3,7 @@ import cn.hutool.socket.nio.NioServer;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.Objects;
 
 public class NioTest extends NioServer {
     private ByteBuffer buf=ByteBuffer.allocate(1024);
@@ -38,10 +39,18 @@ public class NioTest extends NioServer {
 
     }
 
+
     public static void main(String[] args) throws  Exception{
+        String name="123";
+        String oldName=new String("123");
+        System.out.println(name==oldName);
+        boolean b=Objects.equals(name,oldName);//比较两个对象是否相等
+        System.out.println(b);
+        System.out.println(InterTest.num);
         NioServer nioTest = new NioTest(9388);
         nioTest.listen();
         nioTest.close();
+
 
     }
 }
